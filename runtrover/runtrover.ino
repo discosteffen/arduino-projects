@@ -4,6 +4,8 @@
 #define trigPin 13
 #define echoPin 12
 
+
+// test
 Servo myservo;  // create servo object to control a servo
 // twelve servo objects can be created on most boards
 Servo myservo2;  // create servo object to control a servo
