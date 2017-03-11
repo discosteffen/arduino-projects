@@ -1,18 +1,7 @@
-#include <Servo.h>
 
 // ultrasonic stuff
 #define trigPin 13
 #define echoPin 12
-
-
-// test
-Servo myservo;  // create servo object to control a servo
-// twelve servo objects can be created on most boards
-Servo myservo2;  // create servo object to control a servo
-
-
-int pos = 0;    // variable to store the servo position
-int pos1 = 70; // servo 2 position (tilt) 
 
 int E1 = 6;  
 int M1 = 4; 
@@ -29,9 +18,7 @@ void setup()
 
       pinMode(M1, OUTPUT);   //dc
       pinMode(M2, OUTPUT); //dc
-     myservo.attach(9);  // attaches the servo on pin 9 to the servo object
-     myservo2.attach(10);  // attaches the servo on pin 9 to the servo object
-  
+
 } 
  
 void loop() 
@@ -53,7 +40,8 @@ void loop()
 
   if (distance <= 40){
     turn();
-    Serial.println("Turn");
+    Serial.print(distance);
+    Serial.println(" cm");
   }
   else {
     forward();
@@ -78,23 +66,10 @@ void forward(){
 
 void turn(){
 
-  digitalWrite(M1,LOW);   
-  digitalWrite(M2,HIGH);  
+  digitalWrite(M1,HIGH);   
+  digitalWrite(M2,LOW);  
   analogWrite(E1, 255);
-  analogWrite(E2, 1);
+  analogWrite(E2, 50);
  delay(500);
   }
 
-void servo(){
-  for (pos = 0; pos <= 180; pos += 5) { // goes from 0 degrees to 180 degrees
-    // in steps of 1 degree
-    myservo.write(pos);
-    myservo2.write(pos);
-    delay(10);                       // waits 15ms for the servo to reach the position10
-  }
-  for (pos = 180; pos >= 0; pos -= 5) { // goes from 180 degrees to 0 degrees
-    myservo.write(pos);
-    myservo2.write(pos);
-    delay(10);                       // waits 15ms for the servo to reach the position
-  }
- }
