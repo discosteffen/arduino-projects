@@ -23,6 +23,7 @@ void setup()
  
 void loop() 
 { 
+
      long duration, distance;
       digitalWrite(trigPin, LOW);  // Added this line
       delayMicroseconds(2); // Added this line
